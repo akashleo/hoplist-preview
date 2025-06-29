@@ -1,165 +1,92 @@
 import React from 'react';
-import { HopList } from './components/HopList';
+import HopList from 'hoplist';
 import ReactMarkdown from 'react-markdown';
-import { Play, Settings, Package, Truck, CheckCircle2, Rocket, Code, TestTube, ShoppingCart, CreditCard, Warehouse, MapPin, Home, FileText, Eye, MessageSquare, ThumbsUp, Send, Users, Calendar, Presentation as PresentationChart, Award, Briefcase, UserCheck, Building, Handshake, Stethoscope, Pill, FlaskConical, FileCheck, GraduationCap, BookOpen, PenTool, Trophy, Wrench, Cog, Bug, Zap } from 'lucide-react';
+import { Settings, Package, CheckCircle2, Rocket, Code, ShoppingCart, Home, Users, UserCheck, Award, GraduationCap, BookOpen, Trophy, Wrench, Cog } from 'lucide-react';
 
 function App() {
-  // Sample data to demonstrate the timeline component
-  const sampleHopData = [
-    [
-      { hopTime: 1709347200000, name: "Project Started" }
-    ],
-    [
-      { hopTime: 1709433600000, name: "Requirements Gathered" },
-      { hopTime: 1709520000000, name: "Design Phase" }
-    ],
-    [
-      { hopTime: 1709606400000, name: "Development" },
-      { hopTime: 1709692800000, name: "Code Review" },
-      { hopTime: 1709779200000, name: "Testing" }
-    ],
-    [
-      { hopTime: 1709865600000, name: "Deployment" }
-    ]
+  // Basic example - Project Development Timeline
+  const basicExample = [
+    { hopTime: 1699123200, name: "Project Started" },
+    { hopTime: 1699209600, name: "Requirements Gathered" },
+    { hopTime: 1699296000, name: "Design Phase" },
+    { hopTime: 1699382400, name: "Development Phase" },
+    { hopTime: 1699468800, name: "Project Completed" }
   ];
 
-  // E-commerce Order Processing
-  const ecommerceData = [
-    [
-      { hopTime: Date.now() - 86400000 * 5, name: "Order Placed" }
-    ],
-    [
-      { hopTime: Date.now() - 86400000 * 4, name: "Payment Processed" },
-      { hopTime: Date.now() - 86400000 * 3, name: "Inventory Check" }
-    ],
-    [
-      { hopTime: Date.now() - 86400000 * 2, name: "Shipped" }
-    ],
-    [
-      { hopTime: Date.now() - 86400000 * 1, name: "Out for Delivery" }
-    ],
-    [
-      { hopTime: Date.now(), name: "Delivered" }
-    ]
+  // Advanced example with ISO date strings
+  const advancedExample = [
+    { hopTime: "2023-11-04T12:00:00Z", name: "Kickoff Meeting" },
+    { hopTime: "2023-11-05T12:00:00Z", name: "Requirements Analysis" },
+    { hopTime: "2023-11-06T12:00:00Z", name: "Design Phase" },
+    { hopTime: "2023-11-07T12:00:00Z", name: "Development Start" },
+    { hopTime: "2023-11-08T12:00:00Z", name: "Feature Complete" }
   ];
 
-  // Content Publishing Workflow
-  const contentData = [
-    [
-      { hopTime: Date.now() - 86400000 * 7, name: "Draft Created" }
-    ],
-    [
-      { hopTime: Date.now() - 86400000 * 5, name: "Content Review" },
-      { hopTime: Date.now() - 86400000 * 4, name: "Legal Review" }
-    ],
-    [
-      { hopTime: Date.now() - 86400000 * 2, name: "Approved" }
-    ],
-    [
-      { hopTime: Date.now(), name: "Published" }
-    ]
+  // Real-world project timeline with extensive milestones
+  const projectTimeline = [
+    { hopTime: 1699123200, name: "Kickoff Meeting" },
+    { hopTime: 1699209600, name: "Requirements Analysis" },
+    { hopTime: 1699296000, name: "Design Phase" },
+    { hopTime: 1699382400, name: "Development Start" },
+    { hopTime: 1699468800, name: "Feature Complete" },
+    { hopTime: 1699555200, name: "Code Review" },
+    { hopTime: 1699641600, name: "Testing" },
+    { hopTime: 1699728000, name: "Bug Fixes" },
+    { hopTime: 1699814400, name: "Production Deploy" }
   ];
 
-  // Marketing Campaign
-  const marketingData = [
-    [
-      { hopTime: Date.now() - 86400000 * 14, name: "Campaign Planning" }
-    ],
-    [
-      { hopTime: Date.now() - 86400000 * 10, name: "Content Creation" },
-      { hopTime: Date.now() - 86400000 * 8, name: "Audience Research" }
-    ],
-    [
-      { hopTime: Date.now() - 86400000 * 5, name: "Campaign Launch" }
-    ],
-    [
-      { hopTime: Date.now() - 86400000 * 2, name: "Performance Analysis" }
-    ],
-    [
-      { hopTime: Date.now(), name: "Campaign Complete" }
-    ]
+  // Software Development Lifecycle
+  const softwareLifecycle = [
+    { hopTime: "2023-12-01T09:00:00Z", name: "Planning" },
+    { hopTime: "2023-12-03T09:00:00Z", name: "Analysis" },
+    { hopTime: "2023-12-05T09:00:00Z", name: "Design" },
+    { hopTime: "2023-12-07T09:00:00Z", name: "Implementation" },
+    { hopTime: "2023-12-10T09:00:00Z", name: "Testing" },
+    { hopTime: "2023-12-12T09:00:00Z", name: "Deployment" },
+    { hopTime: "2023-12-14T09:00:00Z", name: "Maintenance" }
   ];
 
-  // HR Recruitment Process
-  const recruitmentData = [
-    [
-      { hopTime: Date.now() - 86400000 * 21, name: "Job Posted" }
-    ],
-    [
-      { hopTime: Date.now() - 86400000 * 14, name: "Applications Received" },
-      { hopTime: Date.now() - 86400000 * 10, name: "Initial Screening" }
-    ],
-    [
-      { hopTime: Date.now() - 86400000 * 7, name: "Interviews" },
-      { hopTime: Date.now() - 86400000 * 5, name: "Reference Check" }
-    ],
-    [
-      { hopTime: Date.now() - 86400000 * 2, name: "Offer Extended" }
-    ],
-    [
-      { hopTime: Date.now(), name: "Candidate Hired" }
-    ]
+  // E-commerce Order Journey
+  const orderJourney = [
+    { hopTime: Math.floor(Date.now() / 1000) - 432000, name: "Order Placed" },
+    { hopTime: Math.floor(Date.now() / 1000) - 345600, name: "Payment Confirmed" },
+    { hopTime: Math.floor(Date.now() / 1000) - 259200, name: "Processing" },
+    { hopTime: Math.floor(Date.now() / 1000) - 172800, name: "Shipped" },
+    { hopTime: Math.floor(Date.now() / 1000) - 86400, name: "Out for Delivery" },
+    { hopTime: Math.floor(Date.now() / 1000), name: "Delivered" }
   ];
 
-  // Medical Treatment Process
-  const medicalData = [
-    [
-      { hopTime: Date.now() - 86400000 * 10, name: "Initial Consultation" }
-    ],
-    [
-      { hopTime: Date.now() - 86400000 * 7, name: "Diagnosis" },
-      { hopTime: Date.now() - 86400000 * 5, name: "Lab Tests" }
-    ],
-    [
-      { hopTime: Date.now() - 86400000 * 3, name: "Treatment Plan" }
-    ],
-    [
-      { hopTime: Date.now() - 86400000 * 1, name: "Follow-up" }
-    ],
-    [
-      { hopTime: Date.now(), name: "Recovery Complete" }
-    ]
+  // User Onboarding Process
+  const userOnboarding = [
+    { hopTime: 1701360000, name: "Account Created" },
+    { hopTime: 1701363600, name: "Email Verified" },
+    { hopTime: 1701367200, name: "Profile Setup" },
+    { hopTime: 1701370800, name: "Tutorial Completed" },
+    { hopTime: 1701374400, name: "First Action" },
+    { hopTime: 1701378000, name: "Onboarding Complete" }
   ];
 
-  // Educational Course Progress
-  const educationData = [
-    [
-      { hopTime: Date.now() - 86400000 * 30, name: "Course Enrollment" }
-    ],
-    [
-      { hopTime: Date.now() - 86400000 * 20, name: "Module 1 Complete" },
-      { hopTime: Date.now() - 86400000 * 15, name: "Module 2 Complete" }
-    ],
-    [
-      { hopTime: Date.now() - 86400000 * 10, name: "Midterm Exam" },
-      { hopTime: Date.now() - 86400000 * 5, name: "Final Project" }
-    ],
-    [
-      { hopTime: Date.now(), name: "Course Completed" }
-    ]
+  // Learning Path Progress
+  const learningPath = [
+    { hopTime: "2023-10-01T00:00:00Z", name: "Course Enrollment" },
+    { hopTime: "2023-10-15T00:00:00Z", name: "Module 1: Basics" },
+    { hopTime: "2023-11-01T00:00:00Z", name: "Module 2: Intermediate" },
+    { hopTime: "2023-11-15T00:00:00Z", name: "Module 3: Advanced" },
+    { hopTime: "2023-12-01T00:00:00Z", name: "Final Project" },
+    { hopTime: "2023-12-15T00:00:00Z", name: "Certification" }
   ];
 
-  // Software Bug Fix Process
-  const bugFixData = [
-    [
-      { hopTime: Date.now() - 86400000 * 5, name: "Bug Reported" }
-    ],
-    [
-      { hopTime: Date.now() - 86400000 * 4, name: "Bug Triaged" },
-      { hopTime: Date.now() - 86400000 * 3, name: "Investigation" }
-    ],
-    [
-      { hopTime: Date.now() - 86400000 * 2, name: "Fix Developed" },
-      { hopTime: Date.now() - 86400000 * 1, name: "Testing" }
-    ],
-    [
-      { hopTime: Date.now(), name: "Fix Deployed" }
-    ]
-  ];
+  const readmeContent = `# HopList - React Horizontal Timeline Component
 
-  const readmeContent = `# React Hop Timeline
+A beautiful and customizable React horizontal timeline component with minimal parameters. Perfect for displaying progress steps, journey milestones, or any sequential data.
 
-A React component for displaying timeline hops with a beautiful and intuitive interface. Perfect for visualizing process flows, project milestones, order tracking, and workflow stages.
+## Features
+
+- 🎨 **Fully Customizable Colors** - Customize timeline and icon colors.
+- 🔧 **Custom Icons** - Replace default icons with your own React components or SVGs.
+- 📱 **Responsive & Scrollable** - A horizontally scrollable timeline that works on all screen sizes.
+- ⚡ **Lightweight** - Minimal dependencies and optimized performance.
+- 🎯 **TypeScript Ready** - Built with TypeScript support in mind.
 
 ## Installation
 
@@ -167,247 +94,189 @@ A React component for displaying timeline hops with a beautiful and intuitive in
 npm install hoplist
 \`\`\`
 
-## Basic Usage
+## Usage
+
+### Basic Usage
 
 \`\`\`jsx
-import { HopList } from 'hoplist';
+import React from 'react';
+import HopList from 'hoplist';
 
-const hopData = [
-  [
-    { hopTime: 1709347200000, name: "Start" }
-  ],
-  [
-    { hopTime: 1709347200000, name: "Middle" },
-    { hopTime: 1709347200000, name: "Process" }
-  ],
-  [
-    { hopTime: 1709347200000, name: "End" }
-  ]
-];
+const MyComponent = () => {
+  const hops = [
+    { hopTime: 1699123200, name: "Project Started" },
+    { hopTime: 1699209600, name: "Requirements Gathered" },
+    { hopTime: 1699296000, name: "Development Phase" },
+    { hopTime: 1699382400, name: "Testing Phase" },
+    { hopTime: 1699468800, name: "Project Completed" }
+  ];
 
-function App() {
-  return (
-    <HopList hopChunks={hopData} />
-  );
-}
+  return <HopList hops={hops} />;
+};
+
+export default MyComponent;
 \`\`\`
 
-## Custom Icons
-
-You can customize the start, step, and end icons to match your specific use case:
+### Advanced Usage with Customization
 
 \`\`\`jsx
-import { HopList } from 'hoplist';
-import { Play, Settings, CheckCircle } from 'lucide-react';
+import React from 'react';
+import HopList from 'hoplist';
+import { PlayArrow, CheckCircle, Settings } from '@mui/icons-material'; // Example using Material-UI
 
-const hopData = [
-  [{ hopTime: Date.now(), name: "Started" }],
-  [{ hopTime: Date.now(), name: "Processing" }],
-  [{ hopTime: Date.now(), name: "Completed" }]
-];
+const MyComponent = () => {
+  const hops = [
+    { hopTime: "2023-11-04T12:00:00Z", name: "Project Started" },
+    { hopTime: "2023-11-05T12:00:00Z", name: "Requirements Gathered" },
+    { hopTime: "2023-11-06T12:00:00Z", name: "Development Phase" },
+    { hopTime: "2023-11-07T12:00:00Z", name: "Testing Phase" },
+    { hopTime: "2023-11-08T12:00:00Z", name: "Project Completed" }
+  ];
 
-function App() {
   return (
     <HopList 
-      hopChunks={hopData}
-      startIcon={<Play className="w-5 h-5 text-orange-600" />}
-      stepIcon={<Settings className="w-5 h-5 text-blue-600" />}
-      endIcon={<CheckCircle className="w-5 h-5 text-green-600" />}
+      hops={hops}
+      startIconColor="#4CAF50"
+      timelineColor="#2196F3"
+      stepIconColor="#FF9800"
+      endIconColor="#9C27B0"
+      startIcon={PlayArrow}
+      endIcon={CheckCircle}
+      stepIcon={Settings}
     />
   );
-}
-\`\`\`
+};
 
-## Custom Colors
-
-You can customize the colors of the circles and timeline to match your brand:
-
-\`\`\`jsx
-import { HopList } from 'hoplist';
-
-function App() {
-  return (
-    <HopList 
-      hopChunks={hopData}
-      startColor="border-purple-500"
-      stepColor="border-purple-600"
-      endColor="border-purple-400"
-      timelineColor="bg-purple-500"
-    />
-  );
-}
+export default MyComponent;
 \`\`\`
 
 ## Props
 
-| Prop | Type | Description | Default |
-|------|------|-------------|---------|
-| hopChunks | \`Array<Array<HopItem>>\` | Array of hop chunks where each chunk contains hop items | Required |
-| startIcon | \`React.ReactNode\` | Custom icon for the start step | \`<ArrowRight />\` |
-| stepIcon | \`React.ReactNode\` | Custom icon for intermediate steps | \`<CircleDot />\` |
-| endIcon | \`React.ReactNode\` | Custom icon for the end step | \`<CheckCircle />\` |
-| startColor | \`string\` | Tailwind CSS border color class for start circle | \`"border-gray-500"\` |
-| stepColor | \`string\` | Tailwind CSS border color class for step circles | \`"border-gray-600"\` |
-| endColor | \`string\` | Tailwind CSS border color class for end circle | \`"border-gray-400"\` |
-| timelineColor | \`string\` | Tailwind CSS background color class for timeline | \`"bg-gray-500"\` |
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`hops\` | \`Array<{hopTime: number | string, name: string}>\` | **Required** | Array of objects containing timeline data. |
+| \`startIconColor\` | \`string\` | \`"#6B7280"\` | Color for the start icon border. |
+| \`timelineColor\` | \`string\` | \`"#6B7280"\` | Color for the timeline lines. |
+| \`stepIconColor\` | \`string\` | \`"#6B7280"\` | Color for the step icon borders. |
+| \`endIconColor\` | \`string\` | \`"#6B7280"\` | Color for the end icon border. |
+| \`startIcon\` | \`React.Component\` | \`Default SVG\` | React component for the start icon. |
+| \`endIcon\` | \`React.Component\` | \`Default SVG\` | React component for the end icon. |
+| \`stepIcon\` | \`React.Component\` | \`Default SVG\` | React component for intermediate step icons. |
 
-### HopItem
+## Data Structure
+
+### Hops Format
+
+The \`hops\` prop expects a flat array of objects, where each object represents a single event on the timeline:
+
+\`\`\`javascript
+const hops = [
+  { 
+    hopTime: 1699123200,      // Unix timestamp or ISO Date String
+    name: "Event Name"        // Display name for the event
+  },
+  { 
+    hopTime: "2023-11-05T12:00:00Z",
+    name: "Another Event"
+  },
+  // ... more events
+];
+\`\`\`
+
+### Event Object Properties
 
 | Property | Type | Description |
 |----------|------|-------------|
-| hopTime | number | Timestamp for the hop |
-| name | string | Name or description of the hop |
+| \`hopTime\` | \`number \\| string\` | Unix timestamp (in seconds) or a date string parsable by \`new Date()\`. |
+| \`name\` | \`string\` | Display name that will be shown below the timeline icon. |
 
-## Complete Usage Guide
+### Example with Real Data
 
-### Understanding hopChunks
-
-The \`hopChunks\` prop is the core data structure that defines your timeline. It's an array of arrays, where:
-
-- **Outer array**: Represents the main phases or stages of your process
-- **Inner arrays**: Contain individual steps that happen within each phase
-- **Each step**: Is a \`HopItem\` object with \`hopTime\` (timestamp) and \`name\` (description)
-
-\`\`\`jsx
-const hopChunks = [
-  // Phase 1: Single step
-  [
-    { hopTime: 1709347200000, name: "Project Kickoff" }
-  ],
-  
-  // Phase 2: Multiple parallel steps
-  [
-    { hopTime: 1709433600000, name: "Requirements Analysis" },
-    { hopTime: 1709520000000, name: "UI/UX Design" },
-    { hopTime: 1709606400000, name: "Technical Planning" }
-  ],
-  
-  // Phase 3: Sequential steps in same phase
-  [
-    { hopTime: 1709692800000, name: "Development" },
-    { hopTime: 1709779200000, name: "Code Review" }
-  ],
-  
-  // Phase 4: Final step
-  [
-    { hopTime: 1709865600000, name: "Deployment" }
-  ]
+\`\`\`javascript
+const projectTimeline = [
+  { hopTime: 1699123200, name: "Kickoff Meeting" },
+  { hopTime: 1699209600, name: "Requirements Analysis" },
+  { hopTime: 1699296000, name: "Design Phase" },
+  { hopTime: 1699382400, name: "Development Start" },
+  { hopTime: 1699468800, name: "Feature Complete" },
+  { hopTime: 1699555200, name: "Code Review" },
+  { hopTime: 1699641600, name: "Testing" },
+  { hopTime: 1699728000, name: "Bug Fixes" },
+  { hopTime: 1699814400, name: "Production Deploy" }
 ];
 \`\`\`
 
-### Icon Customization
+## Styling
 
-Icons can be any React component, typically from icon libraries like Lucide React:
+The component can be styled by:
 
-\`\`\`jsx
-import { 
-  Rocket,        // For start
-  Cog,          // For steps
-  Trophy,       // For end
-  User,         // Custom icons
-  Calendar,
-  Mail
-} from 'lucide-react';
+1. **Using the color props** (recommended):
+   \`\`\`jsx
+   <HopList 
+     hops={data}
+     timelineColor="#your-color"
+     // ... other color props
+   />
+   \`\`\`
 
-<HopList 
-  hopChunks={hopChunks}
-  startIcon={<Rocket className="w-5 h-5 text-blue-600" />}
-  stepIcon={<Cog className="w-4 h-4 text-gray-600" />}
-  endIcon={<Trophy className="w-5 h-5 text-yellow-600" />}
-/>
-\`\`\`
+2. **Overriding CSS classes**:
+   \`\`\`css
+   .hoplist-container {
+     /* Your custom styles for the main container */
+   }
+   
+   .hoplist-timeline-line {
+     /* Custom timeline styling */
+   }
+   \`\`\`
 
-### Color Customization
+## CSS Classes Available for Customization
 
-Colors use Tailwind CSS classes for consistency and theming:
+- \`.hoplist-container\` - The main container that centers the component.
+- \`.hoplist-scroll-container\` - The wrapper that handles horizontal scrolling.
+- \`.hoplist-timeline\` - The flex container for all timeline items.
+- \`.hoplist-item\` - An individual timeline item, including the icon and text.
+- \`.hoplist-timeline-elements\` - A wrapper for the icon and connecting line.
+- \`.hoplist-timeline-line\` - The connecting line between icons.
+- \`.hoplist-icon\` - General class for all icons.
+- \`.hoplist-start-icon\` - Specific class for the start icon.
+- \`.hoplist-step-icon\` - Specific class for the step icons.
+- \`.hoplist-end-icon\` - Specific class for the end icon.
+- \`.hoplist-name\` - The event name text.
+- \`.hoplist-timestamp\` - The timestamp text.
 
-\`\`\`jsx
-// Professional blue theme
-<HopList 
-  hopChunks={hopChunks}
-  startColor="border-blue-500"
-  stepColor="border-blue-600"
-  endColor="border-blue-400"
-  timelineColor="bg-blue-500"
-/>
+## Time Format
 
-// Success green theme
-<HopList 
-  hopChunks={hopChunks}
-  startColor="border-green-500"
-  stepColor="border-green-600"
-  endColor="border-green-400"
-  timelineColor="bg-green-500"
-/>
+The component automatically formats the \`hopTime\` value using the built-in \`timestampToDate\` function, which produces a readable format: \`YYYY-MM-DD HH:MM:SS\`.
 
-// Warning amber theme
-<HopList 
-  hopChunks={hopChunks}
-  startColor="border-amber-500"
-  stepColor="border-amber-600"
-  endColor="border-amber-400"
-  timelineColor="bg-amber-500"
-/>
-\`\`\`
+If you need a different time format, you can modify the \`datetime-formatters.js\` file.
 
-## Business Use Cases
+## Dependencies
 
-### E-commerce Order Processing
-\`\`\`jsx
-import { ShoppingCart, CreditCard, Warehouse, Truck, Home } from 'lucide-react';
+- React 16.8+ (for hooks support)
 
-const orderData = [
-  [{ hopTime: Date.now() - 86400000 * 5, name: "Order Placed" }],
-  [{ hopTime: Date.now() - 86400000 * 4, name: "Payment Processed" }],
-  [{ hopTime: Date.now() - 86400000 * 2, name: "Shipped" }],
-  [{ hopTime: Date.now(), name: "Delivered" }]
-];
+## Browser Support
 
-<HopList 
-  hopChunks={orderData}
-  startIcon={<ShoppingCart className="w-5 h-5 text-blue-600" />}
-  stepIcon={<Truck className="w-5 h-5 text-orange-600" />}
-  endIcon={<Home className="w-5 h-5 text-green-600" />}
-/>
-\`\`\`
+- Chrome 60+
+- Firefox 60+
+- Safari 12+
+- Edge 79+
 
-### Content Publishing Workflow
-\`\`\`jsx
-import { FileText, Eye, MessageSquare, Send } from 'lucide-react';
+## Contributing
 
-<HopList 
-  hopChunks={contentData}
-  startIcon={<FileText className="w-5 h-5 text-purple-600" />}
-  stepIcon={<Eye className="w-5 h-5 text-blue-600" />}
-  endIcon={<Send className="w-5 h-5 text-green-600" />}
-/>
-\`\`\`
-
-### HR Recruitment Process
-\`\`\`jsx
-import { Briefcase, Users, UserCheck, Handshake } from 'lucide-react';
-
-<HopList 
-  hopChunks={recruitmentData}
-  startIcon={<Briefcase className="w-5 h-5 text-indigo-600" />}
-  stepIcon={<Users className="w-5 h-5 text-blue-600" />}
-  endIcon={<Handshake className="w-5 h-5 text-green-600" />}
-/>
-\`\`\`
-
-## Features
-
-- **Visual Flow**: Connected circles and lines show progression from start to finish
-- **Timestamps**: Each hop displays formatted date and time
-- **Grouped Steps**: Multiple parallel steps can be grouped in the same phase
-- **Customizable Icons**: Use any React component as start, step, or end icons
-- **Customizable Colors**: Match your brand colors with Tailwind CSS classes
-- **Responsive Design**: Works well on different screen sizes
-- **TypeScript Support**: Full TypeScript definitions included
+1. Fork the repository.
+2. Create your feature branch (\`git checkout -b feature/amazing-feature\`).
+3. Commit your changes (\`git commit -m 'Add some amazing feature'\`).
+4. Push to the branch (\`git push origin feature/amazing-feature\`).
+5. Open a Pull Request.
 
 ## License
 
-MIT`;
+This project is licensed under the MIT License.
+
+---
+
+Made with ❤️ for the React community`;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
@@ -420,145 +289,144 @@ MIT`;
         </p>
 
         <div className="space-y-16">
-          {/* Default Example */}
+          {/* Basic Example */}
           <div className="bg-white rounded-xl shadow-lg p-8">
             <h2 className="text-2xl font-semibold mb-6 text-gray-800 text-center">
-              📋 Default Styling - Project Development Timeline
+              📋 Basic Example - Default Styling
             </h2>
+            <p className="text-center text-gray-600 mb-4">
+              Simple usage with Unix timestamps and default styling
+            </p>
             <div className="overflow-x-auto">
-              <HopList hopChunks={sampleHopData} />
+              <HopList hops={basicExample} />
             </div>
           </div>
 
-          {/* E-commerce Order Processing */}
+          {/* Advanced Example */}
           <div className="bg-white rounded-xl shadow-lg p-8">
             <h2 className="text-2xl font-semibold mb-6 text-gray-800 text-center">
-              🛒 E-commerce Order Processing
+              🎨 Advanced Example - Custom Colors & ISO Dates
             </h2>
+            <p className="text-center text-gray-600 mb-4">
+              Using ISO date strings with custom color scheme
+            </p>
             <div className="overflow-x-auto">
               <HopList 
-                hopChunks={ecommerceData}
-                startIcon={<ShoppingCart className="w-5 h-5 text-blue-600" />}
-                stepIcon={<CreditCard className="w-5 h-5 text-orange-600" />}
-                endIcon={<Home className="w-5 h-5 text-green-600" />}
-                startColor="border-blue-500"
-                stepColor="border-orange-500"
-                endColor="border-green-500"
-                timelineColor="bg-blue-500"
+                hops={advancedExample}
+                startIconColor="#4CAF50"
+                timelineColor="#2196F3"
+                stepIconColor="#FF9800"
+                endIconColor="#9C27B0"
               />
             </div>
           </div>
 
-          {/* Content Publishing */}
+          {/* Real Project Timeline */}
           <div className="bg-white rounded-xl shadow-lg p-8">
             <h2 className="text-2xl font-semibold mb-6 text-gray-800 text-center">
-              📝 Content Publishing Workflow
+              🚀 Real Project Timeline - Extensive Milestones
             </h2>
+            <p className="text-center text-gray-600 mb-4">
+              Comprehensive project timeline from planning to deployment
+            </p>
             <div className="overflow-x-auto">
               <HopList 
-                hopChunks={contentData}
-                startIcon={<FileText className="w-5 h-5 text-purple-600" />}
-                stepIcon={<Eye className="w-5 h-5 text-blue-600" />}
-                endIcon={<Send className="w-5 h-5 text-green-600" />}
-                startColor="border-purple-500"
-                stepColor="border-blue-500"
-                endColor="border-green-500"
-                timelineColor="bg-purple-500"
+                hops={projectTimeline}
+                startIcon={() => <Rocket style={{ color: "#3B82F6" }} />}
+                stepIcon={() => <Code style={{ color: "#F97316" }} />}
+                endIcon={() => <CheckCircle2 style={{ color: "#22C55E" }} />}
+                startIconColor="#3B82F6"
+                stepIconColor="#F97316"
+                endIconColor="#22C55E"
+                timelineColor="#3B82F6"
               />
             </div>
           </div>
 
-          {/* Marketing Campaign */}
+          {/* Software Development Lifecycle */}
           <div className="bg-white rounded-xl shadow-lg p-8">
             <h2 className="text-2xl font-semibold mb-6 text-gray-800 text-center">
-              📊 Marketing Campaign Timeline
+              💻 Software Development Lifecycle
             </h2>
+            <p className="text-center text-gray-600 mb-4">
+              SDLC phases using ISO date strings for precise timing
+            </p>
             <div className="overflow-x-auto">
               <HopList 
-                hopChunks={marketingData}
-                startIcon={<Users className="w-5 h-5 text-pink-600" />}
-                stepIcon={<PresentationChart className="w-5 h-5 text-indigo-600" />}
-                endIcon={<Award className="w-5 h-5 text-yellow-600" />}
-                startColor="border-pink-500"
-                stepColor="border-indigo-500"
-                endColor="border-yellow-500"
-                timelineColor="bg-pink-500"
+                hops={softwareLifecycle}
+                startIcon={() => <Settings style={{ color: "#6366F1" }} />}
+                stepIcon={() => <Cog style={{ color: "#8B5CF6" }} />}
+                endIcon={() => <Wrench style={{ color: "#22C55E" }} />}
+                startIconColor="#6366F1"
+                stepIconColor="#8B5CF6"
+                endIconColor="#22C55E"
+                timelineColor="#6366F1"
               />
             </div>
           </div>
 
-          {/* HR Recruitment */}
+          {/* E-commerce Order Journey */}
           <div className="bg-white rounded-xl shadow-lg p-8">
             <h2 className="text-2xl font-semibold mb-6 text-gray-800 text-center">
-              👥 HR Recruitment Process
+              🛒 E-commerce Order Journey
             </h2>
+            <p className="text-center text-gray-600 mb-4">
+              Real-time order tracking with dynamic timestamps
+            </p>
             <div className="overflow-x-auto">
               <HopList 
-                hopChunks={recruitmentData}
-                startIcon={<Briefcase className="w-5 h-5 text-indigo-600" />}
-                stepIcon={<UserCheck className="w-5 h-5 text-blue-600" />}
-                endIcon={<Handshake className="w-5 h-5 text-green-600" />}
-                startColor="border-indigo-500"
-                stepColor="border-blue-500"
-                endColor="border-green-500"
-                timelineColor="bg-indigo-500"
+                hops={orderJourney}
+                startIcon={() => <ShoppingCart style={{ color: "#3B82F6" }} />}
+                stepIcon={() => <Package style={{ color: "#F97316" }} />}
+                endIcon={() => <Home style={{ color: "#22C55E" }} />}
+                startIconColor="#3B82F6"
+                stepIconColor="#F97316"
+                endIconColor="#22C55E"
+                timelineColor="#3B82F6"
               />
             </div>
           </div>
 
-          {/* Medical Treatment */}
+          {/* User Onboarding */}
           <div className="bg-white rounded-xl shadow-lg p-8">
             <h2 className="text-2xl font-semibold mb-6 text-gray-800 text-center">
-              🏥 Medical Treatment Process
+              👤 User Onboarding Process
             </h2>
+            <p className="text-center text-gray-600 mb-4">
+              Step-by-step user activation and onboarding flow
+            </p>
             <div className="overflow-x-auto">
               <HopList 
-                hopChunks={medicalData}
-                startIcon={<Stethoscope className="w-5 h-5 text-red-600" />}
-                stepIcon={<FlaskConical className="w-5 h-5 text-blue-600" />}
-                endIcon={<FileCheck className="w-5 h-5 text-green-600" />}
-                startColor="border-red-500"
-                stepColor="border-blue-500"
-                endColor="border-green-500"
-                timelineColor="bg-red-500"
+                hops={userOnboarding}
+                startIcon={() => <Users style={{ color: "#8B5CF6" }} />}
+                stepIcon={() => <UserCheck style={{ color: "#06B6D4" }} />}
+                endIcon={() => <Award style={{ color: "#F59E0B" }} />}
+                startIconColor="#8B5CF6"
+                stepIconColor="#06B6D4"
+                endIconColor="#F59E0B"
+                timelineColor="#8B5CF6"
               />
             </div>
           </div>
 
-          {/* Educational Course */}
+          {/* Learning Path */}
           <div className="bg-white rounded-xl shadow-lg p-8">
             <h2 className="text-2xl font-semibold mb-6 text-gray-800 text-center">
-              🎓 Educational Course Progress
+              🎓 Learning Path Progress
             </h2>
+            <p className="text-center text-gray-600 mb-4">
+              Educational journey from enrollment to certification
+            </p>
             <div className="overflow-x-auto">
               <HopList 
-                hopChunks={educationData}
-                startIcon={<GraduationCap className="w-5 h-5 text-emerald-600" />}
-                stepIcon={<BookOpen className="w-5 h-5 text-blue-600" />}
-                endIcon={<Trophy className="w-5 h-5 text-yellow-600" />}
-                startColor="border-emerald-500"
-                stepColor="border-blue-500"
-                endColor="border-yellow-500"
-                timelineColor="bg-emerald-500"
-              />
-            </div>
-          </div>
-
-          {/* Bug Fix Process */}
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-2xl font-semibold mb-6 text-gray-800 text-center">
-              🐛 Software Bug Fix Process
-            </h2>
-            <div className="overflow-x-auto">
-              <HopList 
-                hopChunks={bugFixData}
-                startIcon={<Bug className="w-5 h-5 text-red-600" />}
-                stepIcon={<Wrench className="w-5 h-5 text-orange-600" />}
-                endIcon={<Zap className="w-5 h-5 text-green-600" />}
-                startColor="border-red-500"
-                stepColor="border-orange-500"
-                endColor="border-green-500"
-                timelineColor="bg-red-500"
+                hops={learningPath}
+                startIcon={() => <BookOpen style={{ color: "#059669" }} />}
+                stepIcon={() => <GraduationCap style={{ color: "#3B82F6" }} />}
+                endIcon={() => <Trophy style={{ color: "#F59E0B" }} />}
+                startIconColor="#059669"
+                stepIconColor="#3B82F6"
+                endIconColor="#F59E0B"
+                timelineColor="#059669"
               />
             </div>
           </div>
