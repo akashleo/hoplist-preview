@@ -1,4 +1,3 @@
-import React from 'react';
 import HopList from 'hoplist';
 import ReactMarkdown from 'react-markdown';
 import { Settings, Package, CheckCircle2, Rocket, Code, ShoppingCart, Home, Users, UserCheck, Award, GraduationCap, BookOpen, Trophy, Wrench, Cog } from 'lucide-react';
